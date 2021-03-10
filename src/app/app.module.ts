@@ -16,7 +16,6 @@ import { InMemoryDataService } from "./in-memory-data.service";
 import { HeroSearchComponent } from "./hero-search/hero-search.component";
 import { PetsComponent } from "./pets/pets.component";
 import { PetService } from "./pet.service";
-import { PetSelectComponent } from "./pet-select/pet-select.component";
 @NgModule({
   imports: [
     BrowserModule,
@@ -38,8 +37,7 @@ import { PetSelectComponent } from "./pet-select/pet-select.component";
     MessageComponent,
     DashboardComponent,
     HeroSearchComponent,
-    PetsComponent,
-    PetSelectComponent
+    PetsComponent
   ],
   bootstrap: [AppComponent],
   providers: [HeroService, MessageService, InMemoryDataService, PetService]

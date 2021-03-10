@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { HeroService } from "../hero.service";
 import { PetService } from "../pet.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-hero-detail",
@@ -13,7 +14,7 @@ import { PetService } from "../pet.service";
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
-  @Input() pets?: Pet[];
+  pets: Pet[];
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -27,7 +28,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getPets(): void {
-    this.pets = this.petService.getPets();
+    this.petService.getPets().subscribe(pets => (this.pets = pets));
   }
 
   getHero(): void {
