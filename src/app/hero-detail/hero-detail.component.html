@@ -1,0 +1,22 @@
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>ID: </span>{{hero.id}}</div>
+  <div *ngIf="hero.pet"><span>PET: </span>{{hero.pet.name}}</div>
+  <div *ngIf="!(hero.pet)"><span>PET: No pet defined yet</span></div>
+
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
+    <label for="hero-pet">Pet: </label>
+    <select
+      [compareWith]="compareFn"
+      name="hero-pet"
+      [(ngModel)]="hero.pet"
+      placeholder="pet"
+    >
+      <option *ngFor="let p of pets" [ngValue]="p">{{p.name}}</option></select
+    >
+  </div>
+</div>
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
