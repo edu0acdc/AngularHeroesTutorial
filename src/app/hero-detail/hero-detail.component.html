@@ -1,22 +1,33 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>ID: </span>{{hero.id}}</div>
-  <div *ngIf="hero.pet"><span>PET: </span>{{hero.pet.name}}</div>
-  <div *ngIf="!(hero.pet)"><span>PET: No pet defined yet</span></div>
+  <div class="id"><span>ID: </span>{{hero.id}}</div>
+  <div *ngIf="hero.pet" class="pet"><span>PET: </span>{{hero.pet.name}}</div>
+  <div *ngIf="!(hero.pet)" class="pet">
+    <span>PET: No pet defined yet</span>
+  </div>
 
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
-    <label for="hero-pet">Pet: </label>
+  <div class="form">
+    <label class="form" for="hero-name">Hero name: </label>
+    <input
+      class="form"
+      id="hero-name"
+      [(ngModel)]="hero.name"
+      placeholder="name"
+    />
+    <br />
+    <label class="form" for="hero-pet">Pet: </label>
     <select
+      class="form"
       [compareWith]="compareFn"
       name="hero-pet"
       [(ngModel)]="hero.pet"
       placeholder="pet"
     >
-      <option *ngFor="let p of pets" [ngValue]="p">{{p.name}}</option></select
+      <option class="opt" *ngFor="let p of pets" [ngValue]="p"
+        >{{p.name}}</option
+      ></select
     >
   </div>
 </div>
-<button (click)="goBack()">go back</button>
-<button (click)="save()">save</button>
+<button id="back" (click)="goBack()">Back</button>
+<button id="save" (click)="save()">Save Changes</button>
